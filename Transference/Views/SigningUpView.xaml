@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Transference.Views.SigningUpView"
+             Title="Control de Fichaje">
+
+    <AbsoluteLayout>
+        <!-- Imagen de carga -->
+        <Image x:Name="loadingImage"
+               Source="fondo"
+               Aspect="AspectFill"
+               AbsoluteLayout.LayoutBounds="0,0,1,1"
+               AbsoluteLayout.LayoutFlags="All"
+               IsVisible="True"/>
+
+        <!-- Imagen de fondo -->
+        <Image x:Name="backgroundImage"
+               Source="fondo"
+               Aspect="AspectFill"
+               AbsoluteLayout.LayoutBounds="0,0,1,1"
+               AbsoluteLayout.LayoutFlags="All"
+               IsVisible="False"
+               Loaded="OnBackgroundImageLoaded"/>
+
+        <!-- Contenido -->
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All">
+            <Grid Padding="20">
+                <!-- Definición de columnas y filas -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Fila 1: Hora y Fecha -->
+                <VerticalStackLayout Grid.Row="0" Grid.Column="0" Spacing="20" HorizontalOptions="Center" VerticalOptions="StartAndExpand">
+                    <Label x:Name="reloj" Text="Hora" TextColor="{DynamicResource TextColor}" FontSize="34" HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Label x:Name="fecha" Text="Fecha" TextColor="{DynamicResource TextColor}" FontSize="23" HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Label Text="{Binding TipoFichajeActual}" TextColor="{DynamicResource Blue }"  FontAttributes="Bold" FontSize="20" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <!-- Fila 2: Botones -->
+                <VerticalStackLayout Grid.Row="1" Grid.Column="0" Spacing="10" HorizontalOptions="Center" VerticalOptions="StartAndExpand" Margin="0,20,0,0">
+                    <Button 
+                        BackgroundColor="{DynamicResource ButtonJobBackgroundColor}" 
+                        Text="INICIO JORNADA" 
+                        TextColor="White" 
+                        FontSize="20" 
+                        CornerRadius="10" 
+                        WidthRequest="300" 
+                        ImageSource="entrance.png" 
+                        ContentLayout="Left, 0" 
+                        HorizontalOptions="Center" 
+                        VerticalOptions="Center" 
+                        Command="{Binding InicioJornadaCommand}" 
+                        IsEnabled="{Binding CanExecuteInicioJornadaCommand}" />
+
+                    <Button 
+                        BackgroundColor="{DynamicResource ButtonPauseBackgroundColor}" 
+                        Text="PAUSA ALMUERZO" 
+                        TextColor="White" 
+                        FontSize="20" 
+                        CornerRadius="10" 
+                        WidthRequest="300" 
+                        ImageSource="pause.png" 
+                        ContentLayout="Left, 0" 
+                        HorizontalOptions="Center" 
+                        VerticalOptions="Center" 
+                        Command="{Binding PausaAlmuerzoCommand}"  
+                        IsEnabled="{Binding CanExecutePausaAlmuerzoCommand}" />
+
+                    <Button 
+                        BackgroundColor="{DynamicResource ButtonJobBackgroundColor}" 
+                        Text="REGRESO ALMUERZO" 
+                        TextColor="White" 
+                        FontSize="20" 
+                        CornerRadius="10" 
+                        WidthRequest="300" 
+                        ImageSource="entrance.png" 
+                        ContentLayout="Left, 0" 
+                        HorizontalOptions="Center" 
+                        VerticalOptions="Center" 
+                        Command="{Binding RegresoAlmuerzoCommand}" 
+                        IsEnabled="{Binding CanExecuteRegresoAlmuerzoCommand}" />
+
+                    <Button 
+                        BackgroundColor="{DynamicResource ButtonPauseBackgroundColor}" 
+                        Text="PAUSA COMIDA" 
+                        TextColor="White" 
+                        FontSize="20" 
+                        CornerRadius="10" 
+                        WidthRequest="300" 
+                        ImageSource="pause.png" 
+                        ContentLayout="Left, 0" 
+                        HorizontalOptions="Center" 
+                        VerticalOptions="Center" 
+                        Command="{Binding PausaComidaCommand}" 
+                        IsEnabled="{Binding CanExecutePausaComidaCommand}" />
+
+                    <Button 
+                        BackgroundColor="{DynamicResource ButtonJobBackgroundColor}" 
+                        Text="REGRESO COMIDA" 
+                        TextColor="White" 
+                        FontSize="20" 
+                        CornerRadius="10" 
+                        WidthRequest="300" 
+                        ImageSource="entrance.png" 
+                        ContentLayout="Left, 0" 
+                        HorizontalOptions="Center" 
+                        VerticalOptions="Center" 
+                        Command="{Binding RegresoComidaCommand}" 
+                        IsEnabled="{Binding CanExecuteRegresoComidaCommand}" />
+
+                    <Button 
+                        BackgroundColor="{DynamicResource ButtonPauseBackgroundColor}" 
+                        Text="FINALIZAR JORNADA" 
+                        TextColor="White" 
+                        FontSize="20" 
+                        CornerRadius="10" 
+                        WidthRequest="300" 
+                        ImageSource="close.png" 
+                        ContentLayout="Left, 0" 
+                        HorizontalOptions="Center" 
+                        VerticalOptions="Center" 
+                        Command="{Binding FinalizarJornadaCommand}"  
+                        IsEnabled="{Binding CanExecuteFinalizarJornadaCommand}" />
+
+                    <Button 
+                        BackgroundColor="{DynamicResource ButtonBackgroundColor}" 
+                        Text="OTRAS OPCIONES" 
+                        TextColor="White" 
+                        FontSize="20" 
+                        CornerRadius="10" 
+                        WidthRequest="300" 
+                        ImageSource="info.png" 
+                        ContentLayout="Left, 0" 
+                        HorizontalOptions="Center" 
+                        VerticalOptions="Center" 
+                        Command="{Binding OtrasOpcionesCommand}"  
+                        IsEnabled="{Binding CanExecuteOtrasOpcionesCommand}" />
+
+                    <Button 
+                        BackgroundColor="{DynamicResource ButtonPauseBackgroundColor}" 
+                        Text="CERRAR SESIÓN" 
+                        TextColor="White" 
+                        FontSize="20" 
+                        CornerRadius="10" 
+                        WidthRequest="300" 
+                        ImageSource="close.png" 
+                        ContentLayout="Left, 0" 
+                        HorizontalOptions="Center" 
+                        VerticalOptions="Center" 
+                        Command="{Binding CerrarSesionCommand}" 
+                        IsEnabled="{Binding CanExecuteCerrarSesionCommand}" />
+                </VerticalStackLayout>
+
+            </Grid>
+        </ScrollView>
+    </AbsoluteLayout>
+</ContentPage>
+
+
+

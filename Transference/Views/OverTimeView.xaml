@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Transference.Views.OverTimeView"
+             Title="Horas Extras del Usuario">
+
+    <VerticalStackLayout>
+        <!-- Main Content Layout -->
+        <StackLayout Padding="10" Spacing="10">
+            <!-- Header -->
+            <Label Text="Horas Extras" 
+                   FontSize="24" 
+                   HorizontalOptions="Center" 
+                   Margin="0,10"/>
+
+            <!-- Date Selection Section -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <!-- Start Date -->
+                <StackLayout Padding="5">
+                    <Label Text="Fecha Inicio" FontSize="16" HorizontalOptions="Center"/>
+                    <DatePicker Date="{Binding StartDate}" HorizontalOptions="Center"/>
+                </StackLayout>
+
+                <!-- End Date -->
+                <StackLayout Padding="5">
+                    <Label Text="Fecha Fin" FontSize="16" HorizontalOptions="Center"/>
+                    <DatePicker Date="{Binding EndDate}" HorizontalOptions="Center"/>
+                </StackLayout>
+            </StackLayout>
+
+            <!-- Search Button -->
+            <Button Text="Buscar" 
+                    Command="{Binding SearchCommand}" 
+                    BackgroundColor="CornflowerBlue" 
+                    TextColor="White" 
+                    FontSize="18" 
+                    CornerRadius="10" 
+                    HorizontalOptions="Center" 
+                    Margin="10"/>
+
+            <!-- ListView to display overtime records -->
+            <CollectionView ItemsSource="{Binding OvertimeRecords}" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="Gray" CornerRadius="8" Padding="10" Margin="5">
+                            <StackLayout>
+                                <!-- Full Name -->
+                                <Label Text="{Binding FullName}" FontAttributes="Bold" FontSize="18"/>
+
+                                <!-- Date -->
+                                <Label Text="{Binding AuditCreateDate, StringFormat='Fecha: {0:dd/MM/yyyy}'}" FontSize="16"/>
+
+                                <!-- Hours -->
+                                <Label Text="{Binding Hours, StringFormat='Horas trabajadas: {0:N2}'}" FontSize="16"/>
+
+                                <!-- Reason -->
+                                <Label Text="{Binding Reason}" FontSize="14" TextColor="Gray"/>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Total Hours -->
+            <Label Text="{Binding TotalHours, StringFormat='Total de Horas Extras: {0:N2}'}" 
+                   FontSize="18" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   Margin="10,20,10,0"/>
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

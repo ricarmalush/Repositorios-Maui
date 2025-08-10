@@ -1,0 +1,53 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Transference.App">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <!-- Colores para bordes y fondo -->
+            <Color x:Key="EntryLoginBorderColor">#007BFF</Color>
+            <Color x:Key="ButtonBorderColor">#007BFF</Color>
+            <Color x:Key="ButtonLoginBackgroundColor">#007BFF</Color>
+            <Color x:Key="ButtonLoginTextColor">#FFFFFF</Color>
+            <Color x:Key="EntryLoginTextColor">#000000</Color>
+            <Color x:Key="PageLoginBackgroundColor">#F5F5F5</Color>
+            <Color x:Key="PrimaryLoginTextColor">#333333</Color>
+
+            <!-- Definición de Colores -->
+            <Color x:Key="PageBackgroundColor">#E0E0E0</Color>
+            <Color x:Key="PrimaryTextColor">#000080</Color>
+            <Color x:Key="EntryTextColor">#000000</Color>
+            <Color x:Key="ButtonBackgroundColor">#29abb8</Color>
+            <Color x:Key="ButtonTextColor">#FFFFFF</Color>
+            <Color x:Key="FrameBackgroundColor">#FFFFFF</Color>
+            <Color x:Key="ButtonJobBackgroundColor">#8ec792</Color>
+            <Color x:Key="ButtonPauseBackgroundColor">#b98c91</Color>
+
+            <!-- Definición de Colores Menu Control de Fichaje-->
+            <Color x:Key="ButtonGreenBackgroundColor">#126227</Color>
+            <Color x:Key="ButtonBlueBackgroundColor">#0b79ee</Color>
+            <Color x:Key="ButtonRedBackgroundColor">#ee0b42</Color>
+
+            <!-- Definición de Estilos -->
+            <Style x:Key="PrimaryLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+            </Style>
+
+            <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource ButtonBackgroundColor}" />
+                <Setter Property="TextColor" Value="{StaticResource ButtonTextColor}" />
+                <Setter Property="CornerRadius" Value="6" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+
+            <!-- Merging Other Dictionaries -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

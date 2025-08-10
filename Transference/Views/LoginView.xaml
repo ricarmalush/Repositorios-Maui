@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Transference.Views.LoginView"
+             BackgroundColor="{DynamicResource PageLoginBackgroundColor}"
+             Padding="0"
+             Title="Control Laboral">
+
+    <Grid>
+        <!-- Imagen de fondo -->
+        <Image Source="fondo.jpg"
+               Aspect="AspectFill"
+               VerticalOptions="FillAndExpand"
+               HorizontalOptions="FillAndExpand"/>
+
+        <!-- Contenido del formulario de inicio de sesión -->
+        <Grid Padding="10" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Frame BackgroundColor="White"
+                   CornerRadius="10"
+                   HasShadow="True"
+                   Padding="20"
+                   Margin="20"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"
+                   WidthRequest="300"
+                   HeightRequest="520">
+                <VerticalStackLayout Spacing="20">
+                    <!-- Logo -->
+                    <Image Source="logo.png"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Aspect="AspectFit"
+                           Margin="0,0,0,20"/>
+
+                    <!-- Usuario -->
+                    <Label Text="Usuario:" 
+                           Margin="0"
+                           FontAttributes="Bold"
+                           TextColor="{DynamicResource PrimaryLoginTextColor}"
+                           FontSize="Medium"/>
+
+                    <Frame BorderColor="{DynamicResource EntryLoginBorderColor}"
+                           CornerRadius="5"
+                           Padding="0"
+                           HasShadow="False"
+                           BackgroundColor="Transparent">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="user.png"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"
+                                   Grid.Column="0"
+                                   WidthRequest="24"
+                                   HeightRequest="24"
+                                   Margin="10,0"/>
+
+                            <Entry x:Name="usuario"
+                                   Placeholder="Escribe aquí..."
+                                   FontSize="Medium"
+                                   TextColor="{DynamicResource EntryLoginTextColor}"
+                                   BackgroundColor="Transparent"
+                                   Text="{Binding Usuario}"  
+                                   Grid.Column="1"/>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Contraseña -->
+                    <Label Text="Contraseña:" 
+                           Margin="0"
+                           FontAttributes="Bold"
+                           TextColor="{DynamicResource PrimaryLoginTextColor}" 
+                           FontSize="Medium"/>
+
+                    <Frame BorderColor="{DynamicResource EntryLoginBorderColor}"
+                           CornerRadius="5"
+                           Padding="0"
+                           HasShadow="False"
+                           BackgroundColor="Transparent">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="password.png"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"
+                                   Grid.Column="0"
+                                   WidthRequest="24"
+                                   HeightRequest="24"
+                                   Margin="10,0"/>
+
+                            <Entry x:Name="contraseña"
+                                   Placeholder="Escribe aquí..."
+                                   FontSize="Medium"
+                                   TextColor="{DynamicResource EntryLoginTextColor}"
+                                   BackgroundColor="Transparent"
+                                   IsPassword="True"
+                                   Text="{Binding Password}"  
+                                   Grid.Column="1"/>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Botón de Entrar -->
+                    <Button Margin="0,20,0,0"
+                            Command="{Binding LoginCommand}" 
+                            Text="Entrar"
+                            FontAttributes="Bold"
+                            BackgroundColor="{DynamicResource ButtonLoginBackgroundColor}" 
+                            TextColor="{DynamicResource ButtonLoginTextColor}" 
+                            CornerRadius="6"
+                            FontSize="{OnIdiom Phone=16, Tablet=18, Desktop=20}"/>
+                </VerticalStackLayout>
+            </Frame>
+        </Grid>
+
+        <!-- Activity Indicator -->
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Color="Blue" />
+        <!-- Puedes cambiar el color según sea necesario -->
+    </Grid>
+</ContentPage>

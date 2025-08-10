@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Transference.Views.OtrasOpciones"
+             Title="Otras Opciones">
+
+    <Grid>
+
+        <!-- Imagen de fondo ocupando toda la pantalla -->
+        <Image x:Name="backgroundImage"
+               Source="fondo"
+               Aspect="AspectFill"
+               IsVisible="True" />
+
+        <!-- Imagen de carga centrada y visible cuando se necesite -->
+        <Image x:Name="loadingImage"
+               Source="loading"
+               Aspect="AspectFit"
+               HorizontalOptions="Center" 
+               VerticalOptions="Center"
+               IsVisible="False"/>
+        <!-- Cambia a 'True' cuando necesites mostrar la imagen de carga -->
+
+        <!-- Contenedor principal -->
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Start" Spacing="30" Margin="20,40,20,20">
+
+            <!-- Labels para la hora y fecha centrados en la parte superior -->
+            <VerticalStackLayout Spacing="10" HorizontalOptions="Center" VerticalOptions="Start">
+                <Label x:Name="reloj" Text="Hora" TextColor="{DynamicResource TextColor}" FontSize="34" HorizontalOptions="Center" FontAttributes="Bold"/>
+                <Label x:Name="fecha" Text="Fecha" TextColor="{DynamicResource TextColor}" FontSize="23" HorizontalOptions="Center" FontAttributes="Bold"/>
+            </VerticalStackLayout>
+
+            <!-- Botones centrados debajo de los Labels -->
+            <Button 
+                BackgroundColor="{DynamicResource ButtonPauseBackgroundColor}" 
+                Text="PEDIR VACACIONES" 
+                TextColor="White" 
+                FontSize="20" 
+                CornerRadius="10" 
+                WidthRequest="300" 
+                ImageSource="vacation.png" 
+                ContentLayout="Left, 0" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center" />
+
+            <Button 
+                BackgroundColor="{DynamicResource ButtonJobBackgroundColor}" 
+                Text="VER VACACIONES" 
+                TextColor="White" 
+                FontSize="20" 
+                CornerRadius="10" 
+                WidthRequest="300" 
+                ImageSource="seevacation.png" 
+                ContentLayout="Left, 0" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center" />
+
+            <Button 
+                BackgroundColor="{DynamicResource ButtonPauseBackgroundColor}" 
+                Text="VER FICHAJES" 
+                TextColor="White" 
+                FontSize="20" 
+                CornerRadius="10" 
+                WidthRequest="300" 
+                ImageSource="watch.png" 
+                ContentLayout="Left, 0" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center" />
+
+            <Button 
+                BackgroundColor="{DynamicResource ButtonJobBackgroundColor}" 
+                Text="VER HORAS EXTRAS" 
+                TextColor="White" 
+                FontSize="20" 
+                CornerRadius="10" 
+                WidthRequest="300" 
+                ImageSource="extras.png" 
+                ContentLayout="Left, 0" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center" 
+                Command="{Binding VerHorasExtrasCommand}" />
+
+
+
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
